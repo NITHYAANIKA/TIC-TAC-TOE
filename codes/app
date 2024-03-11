@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+import board.Board;
+import game.Game;
+import player.Player;
+
+public class App {
+   
+   public static void main(String[] args) throws Exception {
+      System.out.println("First Project -> Tic Tac Toe");
+   
+      Board b = new Board(3, '-');
+      Player p1 = new Player();
+      Scanner scan = new Scanner(System.in);
+      System.out.println("Enter the Name of the Player 1: ");
+      String name1 = scan.nextLine();
+      System.out.println("Enter the Name of the Player 2: ");
+      String name2 = scan.nextLine();
+      System.out.print("Enter the Symbol for Player 1 (X or O): ");
+      char symbol1 = scan.next().charAt(0);
+      p1.setPlayerNameAndSymbol(name1,symbol1);
+      p1.getPlayerNameAndSymbol();
+      char symbol2;
+      if(symbol1 == 'X'){
+      symbol2 = 'O';
+      }
+      else{
+      symbol2 = 'X';
+      }
+      Player p2 = new Player();
+      p2.setPlayerNameAndSymbol(name2,symbol2);
+      p2.getPlayerNameAndSymbol();
+
+      Game game  = new Game(new Player[] {p1, p2}, b);
+      game.play();
+
+   }
+}
